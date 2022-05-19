@@ -6,7 +6,6 @@ potato leaves the game. When a kid leaves the game, it passes
 the potato to the next kid. It continues until there is only one kid left.
 "George Peter Michael William Thomas"
 "10"
-
 '''
 
 kids_string = input().split(" ")
