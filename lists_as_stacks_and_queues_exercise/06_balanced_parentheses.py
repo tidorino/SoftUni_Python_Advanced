@@ -12,7 +12,12 @@ You will be given three types of parentheses: (), {}, and [].
 expression = input()
 
 stack_opening_brackets = []
-pair_brackets = {'{': '}', '[': ']', '(': ')'}
+pair_brackets = {
+    '{': '}',
+    '[': ']',
+    '(': ')'
+}
+
 balance = True
 
 for i in expression:
