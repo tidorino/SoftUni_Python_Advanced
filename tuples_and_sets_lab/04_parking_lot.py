@@ -4,6 +4,7 @@ On the following N lines, you will receive the direction and car's number
 in the format: "{direction}, {car_number}".
 The direction could only be "IN" or "OUT".
 Print the car numbers which are still in the parking lot
+
 """
 
 

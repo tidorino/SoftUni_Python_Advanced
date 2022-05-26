@@ -7,6 +7,7 @@ for _ in range(number_names):
 
 # for n in name_set:
 #     print(f'{n}')
+
 [print(n) for n in name_set]
 
 # ***** Other solution *****:
