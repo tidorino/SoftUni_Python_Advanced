@@ -20,3 +20,12 @@ for _ in range(n):
 
 [print(element) for element in chemical_elements]
 
+# ******** other solution:
+# current_set = set(input().split())
+# result = result.union(current_set)
+# for el in result:
+# print(el)
+# *************
+
+
+
