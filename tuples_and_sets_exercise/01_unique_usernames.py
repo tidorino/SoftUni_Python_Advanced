@@ -7,3 +7,4 @@ numbs_usernames = int(input())
 # *******************
 username = {input() for _ in range(numbs_usernames)}
 [print(name) for name in username]
+    
