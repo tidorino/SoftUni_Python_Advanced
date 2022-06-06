@@ -11,7 +11,7 @@ while True:
     new_command = command.split(' ')
     row, col, value = [int(x) for x in new_command[1:]]
 
-    if row < 0 or col < 0 or row >= rows - 1 or col >= rows - 1:
+    if row < 0 or col < 0 or row >= rows or col >= rows:
         print(f'Invalid coordinates')
         continue
 
