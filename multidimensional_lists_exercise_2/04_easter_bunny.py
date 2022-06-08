@@ -16,6 +16,7 @@ B 1 73 4 9
 9 2 33 2 0
 
 """
+import sys
 
 n = int(input())
 
@@ -36,7 +37,7 @@ directions = {
     'up': lambda r, c: (r - 1, c),
     'down': lambda r, c: (r + 1, c)
 }
-best_sum = 0
+best_sum = -sys.maxsize
 best_direction = ''
 best_path = []
 
@@ -50,7 +51,7 @@ for direction in directions:
         current_path.append([row, col])
         row, col = directions[direction](row, col)
 
-    if current_sum > best_sum:
+    if current_sum > best_sum and current_path:
         best_sum = current_sum
         best_direction = direction
         best_path = current_path
