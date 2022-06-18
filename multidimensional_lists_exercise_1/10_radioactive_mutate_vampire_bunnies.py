@@ -1,21 +1,116 @@
-rows, columns = [int(x) for x in input().split()]
+"""
+First, you will receive a line holding integers N and M, representing the lair's rows and columns.
+Next, you receive N strings that can consist only of ".", "B", "P". They represent the initial state of the lair.
+There will be only one player. The bunnies are marked with "B", the player is marked with "P",
+ and everything else is free space, marked with a dot ".".
+Then you will receive a string with commands (e.g., LRRULUD) - each letter represents the next move of the player:
+•	L - the player should move one position to the left
+•	R - the player should move one position to the right
+•	U - the player should move one position up
+•	D - the player should move one position down
+After every step made, each bunny spreads one position up, down, left, and right.
+If the player moves to a bunny cell or a bunny reaches the player, the player dies.
+If the player goes out of the lair without encountering a bunny, the player wins.
+When the player dies or wins, the game ends. All the activities for this turn continue
+(e.g., all the bunnies spread normally), but there are no more turns. There will be no cases where
+the moves of the player end before he dies or escapes.
+**********
+4 5
+.....
+.....
+.B...
+...P.
+LLLLLLLL
 
-matrix = []
+"""
+
+def get_next_pos(row, col, command):
+    if command == 'U':
+        return row - 1, col
+    if command == 'D':
+        return row + 1, col
+    if command == 'L':
+        return row, col - 1
+    if command == 'R':
+        return row, col + 1
+
+
+def is_outside(row, col, rows, cols):
+    return row < 0 or col < 0 or row >= rows or col >= cols
+
+
+def get_children(row, col, rows, cols):
+    possible_children = [
+        [row - 1, col],
+        [row, col - 1],
+        [row, col + 1],
+        [row + 1, col]
+    ]
+
+    result = []
+    for child_row, child_col in possible_children:
+        if not is_outside(child_row, child_col, rows, cols):
+            result.append([child_row, child_col])
+
+    return result
+
+
+rows, cols = [int(x) for x in input().split()]
 
 bunnies = set()
 player_row = 0
 player_col = 0
+
+matrix = []
+
 for row in range(rows):
+    # .....P
     row_elements = list(input())
-    for column in range(columns):
-
-        if row_elements[column] == 'P':
+    for col in range(cols):
+        if row_elements[col] == 'P':
             player_row = row
-            player_col = column
-        elif row_elements[column] == 'B':
-            bunnies.add(f'{row},{column}')
-
+            player_col = col
+        elif row_elements[col] == 'B':
+            bunnies.add(f'{row} {col}')
     matrix.append(row_elements)
 
-commands = input().split()
+commands = input()
 
+won = False
+dead = False
+
+for command in commands:
+    next_row, next_col = get_next_pos(player_row, player_col, command)
+    matrix[player_row][player_col] = '.'
+
+    if is_outside(next_row, next_col, rows, cols):
+        won = True
+    elif matrix[next_row][next_col] == 'B':
+        dead = True
+        player_row, player_col = next_row, next_col
+    else:
+        matrix[next_row][next_col] = 'P'
+        player_row, player_col = next_row, next_col
+
+    new_bunnies = set()
+    for bunny in bunnies:
+        bunny_row, bunny_col = [int(x) for x in bunny.split()]
+        children = get_children(bunny_row, bunny_col, rows, cols)
+        for child_row, child_col in children:
+            new_bunnies.add(f'{child_row} {child_col}')
+            matrix[child_row][child_col] = 'B'
+            if child_row == player_row and child_col == player_col:
+                dead = True
+
+    bunnies = bunnies.union(new_bunnies)
+
+    if won or dead:
+        break
+
+for row in matrix:
+    print(''.join(row))
+
+if won:
+    print(f'won: {player_row} {player_col}')
+else:
+    print(f'dead: {player_row} {player_col}')
