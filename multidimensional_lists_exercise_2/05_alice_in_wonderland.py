@@ -30,9 +30,9 @@ left
 """
 def get_next_position(row, col, position):
     if position == 'up':
-        return row - 1, col
-    if position == 'down':
         return row + 1, col
+    if position == 'down':
+        return row - 1, col
     if position == 'right':
         return row, col + 1
     if position == 'left':
