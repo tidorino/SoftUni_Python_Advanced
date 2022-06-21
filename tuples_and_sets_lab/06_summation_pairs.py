@@ -1,3 +1,11 @@
+"""
+input:
+
+1 5 4 2 2 3 1 3 2
+4
+
+"""
+
 numbers = [int(x) for x in input().split(' ')]
 target_numb = int(input())
 set_unique_pairs = set()
