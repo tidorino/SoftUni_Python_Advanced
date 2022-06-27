@@ -43,26 +43,30 @@ for row in range(n):
 
 commands = input().split(', ')
 
-value = 0
+
+water_deposit = False
+metal_deposit = False
+concrete_deposit = False
+
 for command in commands:
     next_row, next_col = get_next_position(rover_row, rover_col, command, n)
 
     rover_row, rover_col = next_row, next_col
 
     if matrix[rover_row][rover_col] == 'W':
-        value += 1
+        water_deposit = True
         print(f'Water deposit found at {rover_row, rover_col}')
     elif matrix[rover_row][rover_col] == 'M':
-        value += 1
+        metal_deposit = True
         print(f'Metal deposit found at {rover_row, rover_col}')
     elif matrix[rover_row][rover_col] == 'C':
-        value += 1
+        concrete_deposit = True
         print(f'Concrete deposit found at {rover_row, rover_col}')
     elif matrix[rover_row][rover_col] == 'R':
         print(f'Rover got broken at {rover_row, rover_col}')
         break
 
-if value:
+if water_deposit and metal_deposit and concrete_deposit:
     print('Area suitable to start the colony.')
 else:
     print('Area not suitable to start the colony.')
