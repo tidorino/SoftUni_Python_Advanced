@@ -28,6 +28,8 @@ up
 left
 
 """
+
+
 def get_next_position(row, col, position):
     if position == 'up':
         return row + 1, col
