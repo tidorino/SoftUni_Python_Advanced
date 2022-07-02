@@ -35,13 +35,18 @@ def naughty_or_nice_list(kids, *args, **kwargs):
             kiddo.clear()
     if kids:
         santa_dict['Not found'] = [x for y, x in kids]
-
+    output = []
     for k in santa_dict:
         if santa_dict[k]:
-            print(f"{k}: {', '.join(santa_dict[k])}")
-    return ''
+            output.append(f"{k}: {', '.join(santa_dict[k])}\n")
+    return ''.join(output)
+    # result = ''
+    # for k in santa_dict:
+    #     if santa_dict[k]:
+    #         result += f"{k}:\n {', '.join(santa_dict[k])}\n"
+    # return result
 
-#
+
 print(naughty_or_nice_list(
     [
         (3, "Amy"),
