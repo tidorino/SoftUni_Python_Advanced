@@ -57,7 +57,6 @@ while True:
 
     player_row, player_col = next_row, next_col
 
-
     if coins >= 100:
         break
 
