@@ -66,7 +66,7 @@ if coins >= 100:
     print(f"You won! You've collected {round(coins)} coins.")
 
 result = f'Your path:\n'
-for row,col in player_path:
+for row, col in player_path:
     result += f'[{row}, {col}]\n'
 print(result)
 
