@@ -47,7 +47,7 @@ while True:
         break
     queen_row, queen_col = queens_position.pop()
 
-    queen_info = get_next_position(queen_row, queen_col,board, n, queen_winner)
+    queen_info = get_next_position(queen_row, queen_col, board, n, queen_winner)
     if not queen_info:
         continue
 
