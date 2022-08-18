@@ -1,6 +1,5 @@
 def check_if_is_valid_and_add(shopping_cart_dict, meal, product, product_len):
-    # if meal not in shopping_cart_dict.keys():
-    #     shopping_cart_dict[meal] = []
+
     if product not in shopping_cart_dict[meal] and len(shopping_cart_dict[meal]) < product_len:
         shopping_cart_dict[meal].append(product)
 
