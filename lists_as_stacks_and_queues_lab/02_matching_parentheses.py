@@ -15,7 +15,7 @@
 ...
 ')' is closing bracket
     -> pop the top from the stack
-    -> subexpression i between top of stack and this closing bracket
+    -> subexpression is between top of stack and this closing bracket
     -> index 9 , index 15 => (2 + 3)
 ...
 '''
